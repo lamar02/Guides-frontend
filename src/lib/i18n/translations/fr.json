@@ -7,26 +7,30 @@
     "home": "Accueil",
     "login": "Connexion",
     "register": "Inscription",
-    "logout": "Déconnexion",
+    "logout": "Deconnexion",
     "dashboard": "Tableau de bord",
     "getStarted": "Commencer",
     "learnMore": "En savoir plus",
     "tryFree": "Essayer gratuitement",
-    "securePayment": "Paiement sécurisé",
-    "privacy": "Confidentialité",
+    "securePayment": "Paiement securise",
+    "privacy": "Confidentialite",
     "terms": "Conditions",
     "contact": "Contact",
-    "copyright": "© 2026 guides.ai"
+    "copyright": "© 2026 guides.ai",
+    "faq": "FAQ"
   },
   "home": {
-    "badge": "Propulsé par l'IA",
+    "badge": "Propulse par l'IA",
     "heroTitle": "Vos manuels,",
-    "heroTitleHighlight": "simplifiés",
-    "heroDescription": "Transformez n'importe quel manuel PDF en guide d'installation étape par étape. Simple, rapide, intelligent.",
+    "heroTitleHighlight": "simplifies",
+    "heroDescription": "Transformez n'importe quel manuel PDF en guide d'installation etape par etape. Simple, rapide, intelligent.",
+    "stats": {
+      "guidesCreated": "guides crees"
+    },
     "features": {
       "freePreview": "Preview gratuite",
       "oneTimePayment": "Paiement unique",
-      "permanentAccess": "Accès permanent"
+      "permanentAccess": "Acces permanent"
     },
     "form": {
       "title": "Analysez votre PDF",
@@ -39,107 +43,259 @@
       "titlePlaceholder": "Ex: Guide TV Samsung",
       "submitButton": "Analyser le document",
       "analyzing": "Analyse en cours...",
-      "footer": "Essai gratuit • Aucune carte requise"
+      "footer": "Essai gratuit - Aucune carte requise"
+    },
+    "beforeAfter": {
+      "title": "D'un manuel complique a un guide clair",
+      "subtitle": "en quelques secondes",
+      "before": {
+        "label": "Avant",
+        "title": "Manuel PDF",
+        "description": "80 pages denses, technique, difficile a suivre..."
+      },
+      "after": {
+        "label": "Apres",
+        "title": "Guide guides.ai",
+        "steps": "Etapes claires",
+        "tips": "Conseils pratiques",
+        "warnings": "Avertissements",
+        "troubleshooting": "Depannage"
+      }
     },
     "howItWorks": {
-      "title": "Comment ça marche",
-      "subtitle": "Trois étapes simples",
+      "title": "Comment ca marche",
+      "subtitle": "Trois etapes simples",
+      "cta": "Essayer maintenant",
       "step1": {
-        "title": "Collez le lien",
-        "description": "Fournissez l'URL de votre manuel PDF en ligne"
+        "title": "Collez l'URL du PDF",
+        "description": "Nous analysons automatiquement le document"
       },
       "step2": {
-        "title": "Analyse IA",
-        "description": "Notre IA extrait et structure le contenu automatiquement"
+        "title": "Previsualisez les etapes",
+        "description": "Verifiez le guide avant de payer"
       },
       "step3": {
-        "title": "Guide prêt",
-        "description": "Obtenez un guide étape par étape clair et pratique"
+        "title": "Debloquez le guide",
+        "description": "Un paiement unique de 3,99€"
+      }
+    },
+    "benefits": {
+      "title": "Pourquoi choisir guides.ai",
+      "subtitle": "Des avantages concrets pour vous",
+      "items": {
+        "clear": {
+          "title": "Guide clair et structure",
+          "description": "Etapes simples, conseils pratiques et avertissements"
+        },
+        "time": {
+          "title": "Gain de temps immediat",
+          "description": "Plus besoin de chercher dans 100 pages"
+        },
+        "free": {
+          "title": "Previsualisation gratuite",
+          "description": "Essayez avant de payer"
+        },
+        "permanent": {
+          "title": "Acces permanent",
+          "description": "Un seul paiement, pas d'abonnement"
+        }
+      }
+    },
+    "useCases": {
+      "title": "Pour tous vos guides",
+      "subtitle": "Installation, montage, configuration...",
+      "items": {
+        "appliance": "Installer un lave-linge",
+        "furniture": "Monter un meuble",
+        "router": "Configurer un routeur",
+        "software": "Installer un logiciel",
+        "support": "Guide technique client",
+        "internal": "Documentation interne"
+      }
+    },
+    "example": {
+      "title": "Exemple de guide genere",
+      "subtitle": "Voyez la qualite avant d'acheter",
+      "guideTitle": "Installation Lave-linge Samsung",
+      "introduction": "Ce guide vous accompagne pas a pas dans l'installation de votre lave-linge...",
+      "step1": "Deballez l'appareil et verifiez le contenu",
+      "step2": "Retirez les vis de transport a l'arriere",
+      "step3": "Positionnez l'appareil a son emplacement",
+      "locked": "+ 7 etapes supplementaires",
+      "lockedSub": "Guide de depannage inclus",
+      "cta": "Tester avec un PDF"
+    },
+    "testimonials": {
+      "title": "Ils ont simplifie leurs installations",
+      "items": {
+        "1": {
+          "quote": "J'ai installe mon lave-linge en 20 minutes grace au guide. Le manuel d'origine faisait 80 pages !",
+          "name": "Marie L.",
+          "role": "Utilisatrice particuliere"
+        },
+        "2": {
+          "quote": "Je l'utilise pour creer des guides simplifies pour mes clients. Ils comprennent enfin les etapes.",
+          "name": "Thomas D.",
+          "role": "Technicien SAV"
+        },
+        "3": {
+          "quote": "On a reduit nos appels support de 40% en envoyant les guides generes aux clients.",
+          "name": "Sophie M.",
+          "role": "Responsable Support"
+        },
+        "4": {
+          "quote": "Le montage de ma cuisine IKEA etait un cauchemar. Avec le guide, c'etait enfin clair.",
+          "name": "Pierre B.",
+          "role": "Bricoleur du dimanche"
+        },
+        "5": {
+          "quote": "On genere nos guides de formation interne en 2 minutes. Avant, ca prenait une demi-journee.",
+          "name": "Laurent K.",
+          "role": "Directeur Operations"
+        },
+        "6": {
+          "quote": "Nos fiches produits incluent maintenant un guide clair. Le taux de retour a baisse de 25%.",
+          "name": "Amelie R.",
+          "role": "E-commercante"
+        }
       }
     },
     "pricing": {
       "label": "Tarification simple",
       "title": "Un prix unique,",
-      "titleHighlight": "accès à vie.",
+      "titleHighlight": "acces a vie.",
       "description": "Pas d'abonnement. Payez une fois par guide et gardez-le pour toujours.",
       "perGuide": "Par guide",
       "features": {
-        "complete": "Guide complet détaillé",
+        "complete": "Guide complet detaille",
         "expert": "Conseils d'expert",
-        "troubleshooting": "Section dépannage",
-        "permanent": "Accès permanent"
+        "troubleshooting": "Section depannage",
+        "permanent": "Acces permanent",
+        "multilang": "Multi-langue FR/EN"
       },
-      "cta": "Créer un compte"
+      "cta": "Creer mon guide",
+      "guarantee": "Previsualisation gratuite avant paiement"
+    },
+    "trust": {
+      "title": "Vos garanties",
+      "items": {
+        "secure": {
+          "title": "Paiement securise",
+          "description": "Transaction chiffree"
+        },
+        "noCard": {
+          "title": "Aucune carte pour essayer",
+          "description": "Preview 100% gratuite"
+        },
+        "instant": {
+          "title": "Acces instantane",
+          "description": "Guide disponible immediatement"
+        },
+        "ai": {
+          "title": "Propulse par l'IA",
+          "description": "Technologie de pointe"
+        }
+      }
+    },
+    "faq": {
+      "title": "Questions frequentes",
+      "items": {
+        "1": {
+          "question": "Quels formats de fichiers sont acceptes ?",
+          "answer": "Les fichiers PDF accessibles via URL publique."
+        },
+        "2": {
+          "question": "Combien de temps prend la generation ?",
+          "answer": "Entre 30 secondes et 2 minutes selon la taille du document."
+        },
+        "3": {
+          "question": "Le paiement est-il securise ?",
+          "answer": "Oui, nous utilisons DodoPay, une solution de paiement europeenne certifiee."
+        },
+        "4": {
+          "question": "Puis-je acceder a mon guide plus tard ?",
+          "answer": "Oui, tous vos guides achetes sont disponibles dans votre tableau de bord."
+        },
+        "5": {
+          "question": "Dans quelles langues les guides sont-ils disponibles ?",
+          "answer": "Francais et anglais actuellement."
+        }
+      }
+    },
+    "cta": {
+      "title": "Votre guide clair en moins d'une minute",
+      "subtitle": "Collez simplement l'URL de votre PDF",
+      "button": "Commencer gratuitement"
     }
   },
   "auth": {
     "login": {
       "title": "Connexion",
-      "subtitle": "Accédez à votre compte",
+      "subtitle": "Accedez a votre compte",
       "subtitleRedirect": "Connectez-vous pour continuer",
       "welcomeBack": "Bienvenue",
       "welcomeBackHighlight": "de retour",
-      "welcomeDescription": "Connectez-vous pour accéder à vos guides et continuer à transformer vos manuels.",
+      "welcomeDescription": "Connectez-vous pour acceder a vos guides et continuer a transformer vos manuels.",
       "emailLabel": "Email",
       "emailPlaceholder": "vous@exemple.com",
       "emailError": "Email invalide",
       "passwordLabel": "Mot de passe",
-      "passwordPlaceholder": "••••••••",
-      "passwordError": "Le mot de passe doit contenir au moins 8 caractères",
+      "passwordPlaceholder": "--------",
+      "passwordError": "Le mot de passe doit contenir au moins 8 caracteres",
       "submitButton": "Se connecter",
       "submitting": "Connexion...",
       "noAccount": "Pas encore de compte ?",
-      "success": "Connexion réussie !"
+      "success": "Connexion reussie !"
     },
     "register": {
       "title": "Inscription",
-      "subtitle": "Créez votre compte en quelques secondes",
-      "createYour": "Créez votre",
+      "subtitle": "Creez votre compte en quelques secondes",
+      "createYour": "Creez votre",
       "createHighlight": "compte",
       "welcomeDescription": "Rejoignez des milliers d'utilisateurs qui simplifient leurs manuels.",
       "benefits": {
         "free": "Gratuit pour commencer",
         "noCard": "Pas de carte requise",
-        "instant": "Accès instantané"
+        "instant": "Acces instantane"
       },
       "emailLabel": "Email",
       "emailPlaceholder": "vous@exemple.com",
       "passwordLabel": "Mot de passe",
-      "passwordPlaceholder": "Au moins 8 caractères",
+      "passwordPlaceholder": "Au moins 8 caracteres",
       "confirmPasswordLabel": "Confirmer le mot de passe",
-      "confirmPasswordPlaceholder": "••••••••",
+      "confirmPasswordPlaceholder": "--------",
       "confirmPasswordError": "Les mots de passe ne correspondent pas",
-      "submitButton": "Créer mon compte",
-      "submitting": "Création...",
-      "hasAccount": "Déjà un compte ?",
-      "success": "Compte créé avec succès !"
+      "submitButton": "Creer mon compte",
+      "submitting": "Creation...",
+      "hasAccount": "Deja un compte ?",
+      "success": "Compte cree avec succes !"
     }
   },
   "preview": {
-    "notFound": "Preview non trouvée",
-    "notFoundDescription": "Cette preview a expiré ou n'existe pas.",
+    "notFound": "Preview non trouvee",
+    "notFoundDescription": "Cette preview a expire ou n'existe pas.",
     "processing": "Analyse en cours...",
-    "processingDescription": "Cette page se rafraîchira automatiquement",
+    "processingDescription": "Cette page se rafraichira automatiquement",
     "validFor": "Preview valide 24h",
-    "stepsPreview": "Aperçu des étapes",
+    "stepsPreview": "Apercu des etapes",
     "introduction": "Introduction",
-    "moreSteps": "+ {count} étapes supplémentaires",
-    "includingTroubleshooting": "Incluant le guide de dépannage",
+    "moreSteps": "+ {count} etapes supplementaires",
+    "includingTroubleshooting": "Incluant le guide de depannage",
     "unlockFull": "Guide complet",
-    "unlockDescription": "Toutes les étapes détaillées",
+    "unlockDescription": "Toutes les etapes detaillees",
     "features": {
       "complete": "Guide complet",
       "expert": "Conseils d'expert",
-      "troubleshooting": "Dépannage inclus",
-      "permanent": "Accès permanent"
+      "troubleshooting": "Depannage inclus",
+      "permanent": "Acces permanent"
     },
-    "unlockButton": "Débloquer le guide",
+    "unlockButton": "Debloquer le guide",
     "redirecting": "Redirection...",
     "paymentError": "Erreur de paiement"
   },
   "dashboard": {
     "welcome": "Bonjour",
-    "subtitle": "Gérez vos guides d'installation",
+    "subtitle": "Gerez vos guides d'installation",
     "stats": {
       "total": "Total",
       "complete": "Complets",
@@ -147,7 +303,7 @@
     },
     "myGuides": "Mes guides",
     "noGuides": "Aucun guide pour le moment",
-    "noGuidesDescription": "Créez votre premier guide en analysant un PDF",
+    "noGuidesDescription": "Creez votre premier guide en analysant un PDF",
     "analyzeFirst": "Analyser mon premier PDF",
     "newGuide": "Nouveau guide",
     "open": "Ouvrir",
@@ -155,37 +311,37 @@
     "previewBadge": "Preview"
   },
   "guide": {
-    "steps": "Étapes",
-    "stepOf": "Étape {current} sur {total}",
-    "previous": "Précédent",
+    "steps": "Etapes",
+    "stepOf": "Etape {current} sur {total}",
+    "previous": "Precedent",
     "next": "Suivant",
     "tips": "Conseils",
     "warning": "Attention",
-    "troubleshooting": "Dépannage",
-    "problem": "Problème",
+    "troubleshooting": "Depannage",
+    "problem": "Probleme",
     "solution": "Solution",
-    "congratulations": "Félicitations !",
-    "ratingQuestion": "Ce guide vous a-t-il été utile ?",
+    "congratulations": "Felicitations !",
+    "ratingQuestion": "Ce guide vous a-t-il ete utile ?",
     "ratingSuccess": "Merci pour votre avis !",
-    "linkCopied": "Lien copié !",
+    "linkCopied": "Lien copie !",
     "contentNotAvailable": "Contenu non disponible",
-    "unlockComplete": "Débloquez le guide complet",
-    "allStepsPlus": "Toutes les étapes + Guide de dépannage",
+    "unlockComplete": "Debloquez le guide complet",
+    "allStepsPlus": "Toutes les etapes + Guide de depannage",
     "buyNow": "Acheter maintenant"
   },
   "payment": {
-    "verifying": "Vérification du paiement...",
+    "verifying": "Verification du paiement...",
     "verifyingDescription": "Cela ne prendra que quelques secondes",
-    "success": "Paiement réussi !",
-    "successDescription": "Vous avez maintenant accès au guide complet",
+    "success": "Paiement reussi !",
+    "successDescription": "Vous avez maintenant acces au guide complet",
     "viewGuide": "Voir le guide complet",
     "backToDashboard": "Retour au tableau de bord",
     "processing": "Traitement en cours",
-    "processingDescription": "Votre paiement est en cours de vérification. L'accès sera disponible dans quelques instants."
+    "processingDescription": "Votre paiement est en cours de verification. L'acces sera disponible dans quelques instants."
   },
   "errors": {
     "connectionError": "Erreur de connexion",
     "genericError": "Une erreur est survenue",
-    "guideNotFound": "Guide non trouvé"
+    "guideNotFound": "Guide non trouve"
   }
 }

@@ -16,13 +16,17 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "contact": "Contact",
-    "copyright": "© 2026 guides.ai"
+    "copyright": "© 2026 guides.ai",
+    "faq": "FAQ"
   },
   "home": {
     "badge": "Powered by AI",
     "heroTitle": "Your manuals,",
     "heroTitleHighlight": "simplified",
     "heroDescription": "Transform any PDF manual into a clear, step-by-step installation guide. Simple, fast, intelligent.",
+    "stats": {
+      "guidesCreated": "guides created"
+    },
     "features": {
       "freePreview": "Free preview",
       "oneTimePayment": "One-time payment",
@@ -39,22 +43,121 @@
       "titlePlaceholder": "e.g., Samsung TV Setup Guide",
       "submitButton": "Analyze document",
       "analyzing": "Analyzing...",
-      "footer": "Free trial • No card required"
+      "footer": "Free trial - No card required"
+    },
+    "beforeAfter": {
+      "title": "From complicated manual to clear guide",
+      "subtitle": "in seconds",
+      "before": {
+        "label": "Before",
+        "title": "PDF Manual",
+        "description": "80 dense pages, technical, hard to follow..."
+      },
+      "after": {
+        "label": "After",
+        "title": "guides.ai Guide",
+        "steps": "Clear steps",
+        "tips": "Practical tips",
+        "warnings": "Warnings",
+        "troubleshooting": "Troubleshooting"
+      }
     },
     "howItWorks": {
       "title": "How it works",
       "subtitle": "Three simple steps",
+      "cta": "Try it now",
       "step1": {
-        "title": "Paste the link",
-        "description": "Provide the URL of your online PDF manual"
+        "title": "Paste the PDF URL",
+        "description": "We automatically analyze the document"
       },
       "step2": {
-        "title": "AI Analysis",
-        "description": "Our AI extracts and structures the content automatically"
+        "title": "Preview the steps",
+        "description": "Check the guide before paying"
       },
       "step3": {
-        "title": "Guide ready",
-        "description": "Get a clear, practical step-by-step guide"
+        "title": "Unlock the guide",
+        "description": "One-time payment of 3.99 euros"
+      }
+    },
+    "benefits": {
+      "title": "Why choose guides.ai",
+      "subtitle": "Real benefits for you",
+      "items": {
+        "clear": {
+          "title": "Clear and structured guide",
+          "description": "Simple steps, practical tips and warnings"
+        },
+        "time": {
+          "title": "Immediate time savings",
+          "description": "No more searching through 100 pages"
+        },
+        "free": {
+          "title": "Free preview",
+          "description": "Try before you pay"
+        },
+        "permanent": {
+          "title": "Permanent access",
+          "description": "One payment, no subscription"
+        }
+      }
+    },
+    "useCases": {
+      "title": "For all your guides",
+      "subtitle": "Installation, assembly, configuration...",
+      "items": {
+        "appliance": "Install a washing machine",
+        "furniture": "Assemble furniture",
+        "router": "Configure a router",
+        "software": "Install software",
+        "support": "Customer technical guide",
+        "internal": "Internal documentation"
+      }
+    },
+    "example": {
+      "title": "Example of generated guide",
+      "subtitle": "See the quality before you buy",
+      "guideTitle": "Samsung Washing Machine Installation",
+      "introduction": "This guide walks you through the installation of your washing machine step by step...",
+      "step1": "Unpack the appliance and check the contents",
+      "step2": "Remove the transport bolts at the back",
+      "step3": "Position the appliance in its location",
+      "locked": "+ 7 additional steps",
+      "lockedSub": "Troubleshooting guide included",
+      "cta": "Test with a PDF"
+    },
+    "testimonials": {
+      "title": "They simplified their installations",
+      "items": {
+        "1": {
+          "quote": "I installed my washing machine in 20 minutes thanks to the guide. The original manual was 80 pages!",
+          "name": "Marie L.",
+          "role": "Home user"
+        },
+        "2": {
+          "quote": "I use it to create simplified guides for my clients. They finally understand the steps.",
+          "name": "Thomas D.",
+          "role": "Service technician"
+        },
+        "3": {
+          "quote": "We reduced our support calls by 40% by sending the generated guides to customers.",
+          "name": "Sophie M.",
+          "role": "Support Manager"
+        },
+        "4": {
+          "quote": "Assembling my IKEA kitchen was a nightmare. With the guide, it was finally clear.",
+          "name": "Pierre B.",
+          "role": "Weekend DIYer"
+        },
+        "5": {
+          "quote": "We generate our internal training guides in 2 minutes. Before, it took half a day.",
+          "name": "Laurent K.",
+          "role": "Operations Director"
+        },
+        "6": {
+          "quote": "Our product sheets now include a clear guide. The return rate dropped by 25%.",
+          "name": "Amelie R.",
+          "role": "E-commerce seller"
+        }
       }
     },
     "pricing": {
@@ -67,9 +170,62 @@
         "complete": "Complete detailed guide",
         "expert": "Expert tips",
         "troubleshooting": "Troubleshooting section",
-        "permanent": "Permanent access"
+        "permanent": "Permanent access",
+        "multilang": "Multi-language EN/FR"
       },
-      "cta": "Create an account"
+      "cta": "Create my guide",
+      "guarantee": "Free preview before payment"
+    },
+    "trust": {
+      "title": "Your guarantees",
+      "items": {
+        "secure": {
+          "title": "Secure payment",
+          "description": "Encrypted transaction"
+        },
+        "noCard": {
+          "title": "No card to try",
+          "description": "100% free preview"
+        },
+        "instant": {
+          "title": "Instant access",
+          "description": "Guide available immediately"
+        },
+        "ai": {
+          "title": "Powered by AI",
+          "description": "Cutting-edge technology"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "1": {
+          "question": "What file formats are accepted?",
+          "answer": "PDF files accessible via public URL."
+        },
+        "2": {
+          "question": "How long does generation take?",
+          "answer": "Between 30 seconds and 2 minutes depending on document size."
+        },
+        "3": {
+          "question": "Is payment secure?",
+          "answer": "Yes, we use DodoPay, a certified European payment solution."
+        },
+        "4": {
+          "question": "Can I access my guide later?",
+          "answer": "Yes, all your purchased guides are available in your dashboard."
+        },
+        "5": {
+          "question": "In which languages are guides available?",
+          "answer": "English and French currently."
+        }
+      }
+    },
+    "cta": {
+      "title": "Your clear guide in under a minute",
+      "subtitle": "Just paste the URL of your PDF",
+      "button": "Start for free"
     }
   },
   "auth": {
@@ -84,7 +240,7 @@
       "emailPlaceholder": "you@example.com",
       "emailError": "Invalid email",
       "passwordLabel": "Password",
-      "passwordPlaceholder": "••••••••",
+      "passwordPlaceholder": "--------",
       "passwordError": "Password must be at least 8 characters",
       "submitButton": "Sign in",
       "submitting": "Signing in...",
@@ -107,7 +263,7 @@
       "passwordLabel": "Password",
       "passwordPlaceholder": "At least 8 characters",
       "confirmPasswordLabel": "Confirm password",
-      "confirmPasswordPlaceholder": "••••••••",
+      "confirmPasswordPlaceholder": "--------",
       "confirmPasswordError": "Passwords don't match",
       "submitButton": "Create my account",
       "submitting": "Creating...",
