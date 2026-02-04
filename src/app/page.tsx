@@ -164,9 +164,15 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-400/10 rounded-full mb-6 sm:mb-8">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
-                <span className="text-xs sm:text-sm font-medium text-gray-700">{t('home.badge')}</span>
+              <div className="flex flex-wrap items-center gap-3 mb-6 sm:mb-8">
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-400/10 rounded-full">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">{t('home.badge')}</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-green-100 rounded-full">
+                  <CheckCircle className="w-3.5 h-3.5 text-green-600" />
+                  <span className="text-xs sm:text-sm font-medium text-green-700">+500 {t('home.stats.guidesCreated')}</span>
+                </div>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-[1.1] tracking-tight mb-6 sm:mb-8">
