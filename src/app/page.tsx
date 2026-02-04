@@ -52,8 +52,25 @@ export default function HomePage() {
   const { t, locale } = useTranslation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingStep, setLoadingStep] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const loadingSteps = locale === 'fr'
+    ? ['Connexion au document...', 'Extraction du texte...', 'Analyse IA en cours...', 'Generation du guide...']
+    : ['Connecting to document...', 'Extracting text...', 'AI analysis in progress...', 'Generating guide...'];
+
+  // Loading steps animation
+  useEffect(() => {
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setLoadingStep((prev) => (prev + 1) % loadingSteps.length);
+      }, 2500);
+      return () => clearInterval(interval);
+    } else {
+      setLoadingStep(0);
+    }
+  }, [isLoading, loadingSteps.length]);
 
   const analyzeSchema = z.object({
     fileUrl: z.string().url(t('home.form.urlError')),
@@ -261,13 +278,59 @@ export default function HomePage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full h-14 text-base font-semibold bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl transition-all hover:shadow-lg hover:shadow-yellow-400/25"
+                      className={`w-full h-14 text-base font-semibold rounded-xl transition-all relative overflow-hidden ${
+                        isLoading
+                          ? 'bg-black text-white'
+                          : 'bg-yellow-400 hover:bg-yellow-500 text-black hover:shadow-lg hover:shadow-yellow-400/25'
+                      }`}
                       disabled={isLoading}
                     >
                       {isLoading ? (
                         <>
-                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                          {t('home.form.analyzing')}
+                          {/* Animated progress bar */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-yellow-400/40 to-yellow-400/20"
+                            animate={{
+                              x: ['-100%', '100%'],
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              ease: 'linear',
+                            }}
+                          />
+                          {/* Pulse ring */}
+                          <motion.div
+                            className="absolute inset-0 border-2 border-yellow-400/50 rounded-xl"
+                            animate={{
+                              scale: [1, 1.02, 1],
+                              opacity: [0.5, 1, 0.5],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: 'easeInOut',
+                            }}
+                          />
+                          <span className="relative flex items-center justify-center gap-3">
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                            >
+                              <Loader2 className="w-5 h-5" />
+                            </motion.div>
+                            <AnimatePresence mode="wait">
+                              <motion.span
+                                key={loadingStep}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {loadingSteps[loadingStep]}
+                              </motion.span>
+                            </AnimatePresence>
+                          </span>
                         </>
                       ) : (
                         <>
