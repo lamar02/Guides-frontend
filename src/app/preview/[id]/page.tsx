@@ -82,12 +82,12 @@ export default function PreviewPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#fafafa]">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <Skeleton className="h-10 w-64 mb-8 rounded-xl" />
-          <Skeleton className="h-6 w-96 mb-12 rounded-lg" />
-          <div className="space-y-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+          <Skeleton className="h-8 sm:h-10 w-48 sm:w-64 mb-6 sm:mb-8 rounded-lg sm:rounded-xl" />
+          <Skeleton className="h-5 sm:h-6 w-full sm:w-96 mb-8 sm:mb-12 rounded-md sm:rounded-lg" />
+          <div className="space-y-4 sm:space-y-6">
             {[1, 2, 3].map((i) => (
-              <Skeleton key={i} className="h-32 w-full rounded-2xl" />
+              <Skeleton key={i} className="h-28 sm:h-32 w-full rounded-xl sm:rounded-2xl" />
             ))}
           </div>
         </div>
@@ -97,20 +97,20 @@ export default function PreviewPage() {
 
   if (error || !preview) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-6">
+      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-4 sm:p-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <div className="w-20 h-20 bg-red-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <AlertTriangle className="w-10 h-10 text-red-500" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+            <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-red-500" />
           </div>
-          <h1 className="text-2xl font-bold text-black mb-3">{t('preview.notFound')}</h1>
-          <p className="text-gray-500 mb-8 max-w-sm">
+          <h1 className="text-xl sm:text-2xl font-bold text-black mb-2 sm:mb-3">{t('preview.notFound')}</h1>
+          <p className="text-gray-500 text-sm sm:text-base mb-6 sm:mb-8 max-w-sm px-4">
             {error || t('preview.notFoundDescription')}
           </p>
-          <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-xl h-12 px-6">
+          <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-xl h-11 sm:h-12 px-5 sm:px-6">
             <Link href="/">{t('common.home')}</Link>
           </Button>
         </motion.div>
@@ -120,19 +120,19 @@ export default function PreviewPage() {
 
   if (preview.status === 'processing') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
+      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-4">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-center"
         >
-          <div className="relative mb-8">
-            <div className="w-20 h-20 bg-yellow-100 rounded-3xl flex items-center justify-center mx-auto">
-              <Loader2 className="w-10 h-10 text-yellow-500 animate-spin" />
+          <div className="relative mb-6 sm:mb-8">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-yellow-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto">
+              <Loader2 className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-500 animate-spin" />
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-black mb-3">{t('preview.processing')}</h1>
-          <p className="text-gray-500">{t('preview.processingDescription')}</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-black mb-2 sm:mb-3">{t('preview.processing')}</h1>
+          <p className="text-gray-500 text-sm sm:text-base px-4">{t('preview.processingDescription')}</p>
         </motion.div>
       </div>
     );
@@ -145,27 +145,27 @@ export default function PreviewPage() {
     <div className="min-h-screen bg-[#fafafa]">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-black rounded-xl flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
+        <nav className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-black rounded-lg sm:rounded-xl flex items-center justify-center">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
             </div>
-            <span className="text-lg font-semibold text-black">{t('common.brandName')}</span>
+            <span className="text-base sm:text-lg font-semibold text-black hidden sm:inline">{t('common.brandName')}</span>
           </Link>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-2 sm:gap-3 items-center">
             <LanguageSwitcher variant="minimal" />
             {authLoading ? (
               <Loader2 className="w-5 h-5 animate-spin text-gray-400" />
             ) : isAuthenticated ? (
-              <Button variant="ghost" asChild className="text-gray-600 hover:text-black">
+              <Button variant="ghost" asChild className="text-gray-600 hover:text-black text-sm sm:text-base">
                 <Link href="/dashboard">{t('common.dashboard')}</Link>
               </Button>
             ) : (
               <>
-                <Button variant="ghost" asChild className="text-gray-600 hover:text-black">
+                <Button variant="ghost" asChild className="text-gray-600 hover:text-black text-sm hidden sm:inline-flex">
                   <Link href={`/login?redirect=/preview/${previewId}`}>{t('common.login')}</Link>
                 </Button>
-                <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-full px-5">
+                <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-full px-4 sm:px-5 text-sm">
                   <Link href={`/register?redirect=/preview/${previewId}`}>{t('common.register')}</Link>
                 </Button>
               </>
@@ -174,28 +174,28 @@ export default function PreviewPage() {
         </nav>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-12">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Guide Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <span className="px-2 sm:px-3 py-1 bg-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-600">
               {preview.productCategory || 'Guide'}
             </span>
-            <span className="flex items-center gap-1 text-sm text-gray-400">
-              <Clock className="w-4 h-4" />
+            <span className="flex items-center gap-1 text-xs sm:text-sm text-gray-400">
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
               {t('preview.validFor')}
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-black leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black leading-tight">
             {preview.title || preview.productName}
           </h1>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Steps Preview */}
           <div className="lg:col-span-2">
             <AnimatePresence>
@@ -206,16 +206,16 @@ export default function PreviewPage() {
                   transition={{ delay: 0.1 }}
                 >
                   {preview.content.introduction && (
-                    <Card className="mb-8 border-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
-                      <CardContent className="p-6">
-                        <p className="text-gray-700 leading-relaxed">{preview.content.introduction}</p>
+                    <Card className="mb-6 sm:mb-8 border-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl sm:rounded-2xl">
+                      <CardContent className="p-4 sm:p-6">
+                        <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{preview.content.introduction}</p>
                       </CardContent>
                     </Card>
                   )}
 
-                  <h2 className="text-xl font-bold text-black mb-6">{t('preview.stepsPreview')}</h2>
+                  <h2 className="text-lg sm:text-xl font-bold text-black mb-4 sm:mb-6">{t('preview.stepsPreview')}</h2>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {preview.content.steps.map((step, index) => (
                       <motion.div
                         key={step.number}
@@ -223,17 +223,17 @@ export default function PreviewPage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.15 * index }}
                       >
-                        <Card className="border-0 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                          <CardContent className="p-6">
-                            <div className="flex gap-5">
-                              <div className="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0">
+                        <Card className="border-0 bg-white rounded-xl sm:rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                          <CardContent className="p-4 sm:p-6">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black text-white rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-base sm:text-lg flex-shrink-0">
                                 {step.number}
                               </div>
                               <div>
-                                <h3 className="text-lg font-semibold text-black mb-2">
+                                <h3 className="text-base sm:text-lg font-semibold text-black mb-1 sm:mb-2">
                                   {step.title}
                                 </h3>
-                                <p className="text-gray-600">{step.description}</p>
+                                <p className="text-gray-600 text-sm sm:text-base">{step.description}</p>
                               </div>
                             </div>
                           </CardContent>
@@ -247,13 +247,13 @@ export default function PreviewPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="mt-6 border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center"
+                    className="mt-4 sm:mt-6 border-2 border-dashed border-gray-200 rounded-xl sm:rounded-2xl p-6 sm:p-10 text-center"
                   >
-                    <Lock className="w-10 h-10 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-600 font-medium">
+                    <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-gray-300 mx-auto mb-3 sm:mb-4" />
+                    <p className="text-gray-600 font-medium text-sm sm:text-base">
                       {t('preview.moreSteps').replace('{count}', String(totalSteps - stepsCount))}
                     </p>
-                    <p className="text-gray-400 text-sm mt-1">
+                    <p className="text-gray-400 text-xs sm:text-sm mt-1">
                       {t('preview.includingTroubleshooting')}
                     </p>
                   </motion.div>
@@ -263,33 +263,33 @@ export default function PreviewPage() {
           </div>
 
           {/* Sticky Payment Card */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24">
+          <div className="lg:col-span-1 order-first lg:order-last">
+            <div className="lg:sticky lg:top-24">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="border-0 bg-black text-white rounded-3xl overflow-hidden shadow-2xl">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-2">{t('preview.unlockFull')}</h3>
-                    <p className="text-gray-400 mb-6">{t('preview.unlockDescription')}</p>
+                <Card className="border-0 bg-black text-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl mb-6 lg:mb-0">
+                  <CardContent className="p-5 sm:p-8">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('preview.unlockFull')}</h3>
+                    <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">{t('preview.unlockDescription')}</p>
 
-                    <div className="flex items-baseline gap-1 mb-8">
-                      <span className="text-5xl font-bold">3,99</span>
-                      <span className="text-xl text-gray-400">€</span>
+                    <div className="flex items-baseline gap-1 mb-6 sm:mb-8">
+                      <span className="text-4xl sm:text-5xl font-bold">3,99</span>
+                      <span className="text-lg sm:text-xl text-gray-400">€</span>
                     </div>
 
-                    <div className="space-y-3 mb-8">
+                    <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                       {[
                         { icon: CheckCircle, key: 'complete' },
                         { icon: Zap, key: 'expert' },
                         { icon: Shield, key: 'troubleshooting' },
                         { icon: Clock, key: 'permanent' },
                       ].map((item) => (
-                        <div key={item.key} className="flex items-center gap-3">
-                          <item.icon className="w-5 h-5 text-yellow-400" />
-                          <span className="text-gray-300">{t(`preview.features.${item.key}`)}</span>
+                        <div key={item.key} className="flex items-center gap-2 sm:gap-3">
+                          <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" />
+                          <span className="text-gray-300 text-sm sm:text-base">{t(`preview.features.${item.key}`)}</span>
                         </div>
                       ))}
                     </div>
@@ -298,7 +298,7 @@ export default function PreviewPage() {
                       size="lg"
                       onClick={handlePayment}
                       disabled={isPaymentLoading}
-                      className="w-full h-14 text-base font-semibold bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl"
+                      className="w-full h-12 sm:h-14 text-sm sm:text-base font-semibold bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl"
                     >
                       {isPaymentLoading ? (
                         <>
@@ -313,7 +313,7 @@ export default function PreviewPage() {
                       )}
                     </Button>
 
-                    <p className="text-center text-gray-500 text-sm mt-4 flex items-center justify-center gap-2">
+                    <p className="text-center text-gray-500 text-xs sm:text-sm mt-3 sm:mt-4 flex items-center justify-center gap-2">
                       <Shield className="w-4 h-4" />
                       {t('common.securePayment')}
                     </p>

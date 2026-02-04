@@ -30,7 +30,7 @@ export interface PreviewData {
 }
 
 export const publicService = {
-  async analyzeDocument(fileUrl: string, title?: string): Promise<AnalyzeResult> {
+  async analyzeDocument(fileUrl: string, title?: string, language: 'en' | 'fr' = 'en'): Promise<AnalyzeResult> {
     const response = await fetch(`${API_URL}/public/analyze`, {
       method: 'POST',
       headers: {
@@ -41,6 +41,7 @@ export const publicService = {
         title,
         productName: title || 'Document',
         productCategory: 'general',
+        language,
       }),
     });
 

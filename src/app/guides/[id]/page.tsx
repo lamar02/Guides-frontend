@@ -40,26 +40,26 @@ function StepCard({ step, isActive, t }: { step: GuideStep; isActive: boolean; t
       animate={{ opacity: isActive ? 1 : 0.6, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className={`border-0 bg-white rounded-2xl transition-shadow ${isActive ? 'shadow-lg' : 'shadow-sm'}`}>
-        <CardContent className="p-6 md:p-8">
-          <div className="flex gap-5">
-            <div className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center font-bold text-xl flex-shrink-0">
+      <Card className={`border-0 bg-white rounded-xl sm:rounded-2xl transition-shadow ${isActive ? 'shadow-lg' : 'shadow-sm'}`}>
+        <CardContent className="p-4 sm:p-6 md:p-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 bg-black text-white rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-base sm:text-xl flex-shrink-0">
               {step.number}
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-black mb-3">{step.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{step.description}</p>
+              <h3 className="text-base sm:text-xl font-bold text-black mb-2 sm:mb-3">{step.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{step.description}</p>
 
               {step.tips && step.tips.length > 0 && (
-                <div className="mt-5 p-5 bg-blue-50 rounded-xl">
-                  <div className="flex items-center gap-2 text-blue-700 font-semibold mb-3">
-                    <Lightbulb className="w-5 h-5" />
+                <div className="mt-4 sm:mt-5 p-3 sm:p-5 bg-blue-50 rounded-lg sm:rounded-xl">
+                  <div className="flex items-center gap-2 text-blue-700 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">
+                    <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5" />
                     {t('guide.tips')}
                   </div>
                   <ul className="space-y-2">
                     {step.tips.map((tip, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-blue-600">
-                        <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                      <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-blue-600">
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
                         {tip}
                       </li>
                     ))}
@@ -68,15 +68,15 @@ function StepCard({ step, isActive, t }: { step: GuideStep; isActive: boolean; t
               )}
 
               {step.warnings && step.warnings.length > 0 && (
-                <div className="mt-5 p-5 bg-amber-50 rounded-xl">
-                  <div className="flex items-center gap-2 text-amber-700 font-semibold mb-3">
-                    <AlertTriangle className="w-5 h-5" />
+                <div className="mt-4 sm:mt-5 p-3 sm:p-5 bg-amber-50 rounded-lg sm:rounded-xl">
+                  <div className="flex items-center gap-2 text-amber-700 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">
+                    <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5" />
                     {t('guide.warning')}
                   </div>
                   <ul className="space-y-2">
                     {step.warnings.map((warning, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-amber-600">
-                        <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                      <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-amber-600">
+                        <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
                         {warning}
                       </li>
                     ))}
@@ -102,7 +102,7 @@ function RatingStars({ onRate, successMessage }: { onRate: (r: number) => void; 
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-1 sm:gap-2">
       {[1, 2, 3, 4, 5].map((star) => (
         <button
           key={star}
@@ -113,7 +113,7 @@ function RatingStars({ onRate, successMessage }: { onRate: (r: number) => void; 
           className="focus:outline-none transition-transform hover:scale-110"
         >
           <Star
-            className={`w-10 h-10 ${
+            className={`w-8 h-8 sm:w-10 sm:h-10 ${
               star <= (hover || rating)
                 ? 'fill-yellow-400 text-yellow-400'
                 : 'text-gray-200'
@@ -190,12 +190,12 @@ export default function GuidePage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#fafafa]">
-        <div className="max-w-4xl mx-auto px-6 py-20">
-          <Skeleton className="h-8 w-32 mb-6 rounded-xl" />
-          <Skeleton className="h-12 w-full mb-4 rounded-xl" />
-          <Skeleton className="h-32 w-full mb-8 rounded-2xl" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+          <Skeleton className="h-6 sm:h-8 w-24 sm:w-32 mb-4 sm:mb-6 rounded-lg sm:rounded-xl" />
+          <Skeleton className="h-10 sm:h-12 w-full mb-4 rounded-lg sm:rounded-xl" />
+          <Skeleton className="h-24 sm:h-32 w-full mb-6 sm:mb-8 rounded-xl sm:rounded-2xl" />
           {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-40 w-full mb-4 rounded-2xl" />
+            <Skeleton key={i} className="h-32 sm:h-40 w-full mb-4 rounded-xl sm:rounded-2xl" />
           ))}
         </div>
       </div>
@@ -204,13 +204,13 @@ export default function GuidePage() {
 
   if (error || !guide) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-6">
+      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-4 sm:p-6">
         <div className="text-center">
-          <div className="w-20 h-20 bg-red-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <AlertTriangle className="w-10 h-10 text-red-500" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+            <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-red-500" />
           </div>
-          <h1 className="text-2xl font-bold text-black mb-3">{error || t('errors.guideNotFound')}</h1>
-          <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-xl h-12 px-6 mt-4">
+          <h1 className="text-xl sm:text-2xl font-bold text-black mb-2 sm:mb-3 px-4">{error || t('errors.guideNotFound')}</h1>
+          <Button asChild className="bg-black hover:bg-gray-900 text-white rounded-xl h-11 sm:h-12 px-5 sm:px-6 mt-4">
             <Link href="/dashboard">
               <ArrowLeft className="w-4 h-4 mr-2" />
               {t('common.back')}
@@ -242,55 +242,55 @@ export default function GuidePage() {
     <div className="min-h-screen bg-[#fafafa]">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <nav className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+        <nav className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <Link href="/dashboard" className="flex items-center gap-2 text-gray-500 hover:text-black transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span className="hidden sm:inline font-medium">{t('common.back')}</span>
           </Link>
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-black rounded-xl flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-black rounded-lg sm:rounded-xl flex items-center justify-center">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
             </div>
           </Link>
-          <Button variant="ghost" size="icon" onClick={handleShare} className="text-gray-500 hover:text-black rounded-xl">
-            <Share2 className="w-5 h-5" />
+          <Button variant="ghost" size="icon" onClick={handleShare} className="text-gray-500 hover:text-black rounded-lg sm:rounded-xl w-9 h-9 sm:w-10 sm:h-10">
+            <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
         </nav>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Guide Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 sm:mb-10">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <span className="px-2 sm:px-3 py-1 bg-gray-100 rounded-full text-xs sm:text-sm font-medium text-gray-600">
               {guide.productCategory || 'Guide'}
             </span>
             {guide.hasFullAccess && (
-              <span className="px-3 py-1 bg-green-100 rounded-full text-sm font-medium text-green-700">
+              <span className="px-2 sm:px-3 py-1 bg-green-100 rounded-full text-xs sm:text-sm font-medium text-green-700">
                 {t('dashboard.complete')}
               </span>
             )}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">{content.title}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4 sm:mb-6">{content.title}</h1>
 
           {content.introduction && (
-            <Card className="border-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
-              <CardContent className="p-6">
-                <p className="text-gray-700 leading-relaxed">{content.introduction}</p>
+            <Card className="border-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl sm:rounded-2xl">
+              <CardContent className="p-4 sm:p-6">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{content.introduction}</p>
               </CardContent>
             </Card>
           )}
         </motion.div>
 
         {/* View Toggle & Progress */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl font-bold text-black">{t('guide.steps')}</h2>
-          <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-xl">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold text-black">{t('guide.steps')}</h2>
+          <div className="flex items-center gap-1 sm:gap-2 bg-gray-100 p-1 rounded-lg sm:rounded-xl">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setViewMode('carousel')}
-              className={`rounded-lg ${viewMode === 'carousel' ? 'bg-white shadow-sm' : ''}`}
+              className={`rounded-md sm:rounded-lg h-8 w-8 sm:h-9 sm:w-9 p-0 ${viewMode === 'carousel' ? 'bg-white shadow-sm' : ''}`}
             >
               <LayoutGrid className="w-4 h-4" />
             </Button>
@@ -298,7 +298,7 @@ export default function GuidePage() {
               variant="ghost"
               size="sm"
               onClick={() => setViewMode('list')}
-              className={`rounded-lg ${viewMode === 'list' ? 'bg-white shadow-sm' : ''}`}
+              className={`rounded-md sm:rounded-lg h-8 w-8 sm:h-9 sm:w-9 p-0 ${viewMode === 'list' ? 'bg-white shadow-sm' : ''}`}
             >
               <List className="w-4 h-4" />
             </Button>
@@ -307,12 +307,12 @@ export default function GuidePage() {
 
         {/* Progress Bar */}
         {viewMode === 'carousel' && (
-          <div className="mb-8">
-            <div className="flex justify-between text-sm text-gray-500 mb-3">
+          <div className="mb-6 sm:mb-8">
+            <div className="flex justify-between text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
               <span className="font-medium">{t('guide.stepOf').replace('{current}', String(currentStep + 1)).replace('{total}', String(totalSteps))}</span>
               <span>{Math.round(progress)}%</span>
             </div>
-            <Progress value={progress} className="h-2" />
+            <Progress value={progress} className="h-1.5 sm:h-2" />
           </div>
         )}
 
@@ -321,22 +321,22 @@ export default function GuidePage() {
           {viewMode === 'carousel' ? (
             <div key="carousel">
               <StepCard step={content.steps[currentStep]} isActive={true} t={t} />
-              <div className="flex items-center justify-between mt-8">
+              <div className="flex items-center justify-between mt-6 sm:mt-8 gap-2">
                 <Button
                   variant="outline"
                   onClick={() => setCurrentStep((s) => s - 1)}
                   disabled={currentStep === 0}
-                  className="rounded-xl border-gray-200 hover:bg-gray-50"
+                  className="rounded-lg sm:rounded-xl border-gray-200 hover:bg-gray-50 h-10 sm:h-11 px-3 sm:px-4 text-sm"
                 >
-                  <ChevronLeft className="w-4 h-4 mr-2" />
-                  {t('guide.previous')}
+                  <ChevronLeft className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">{t('guide.previous')}</span>
                 </Button>
-                <div className="flex gap-2">
+                <div className="flex gap-1.5 sm:gap-2 overflow-x-auto max-w-[40%] sm:max-w-none">
                   {content.steps.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrentStep(i)}
-                      className={`w-3 h-3 rounded-full transition-all ${
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all flex-shrink-0 ${
                         i === currentStep
                           ? 'bg-yellow-400 scale-125'
                           : i < currentStep
@@ -349,15 +349,15 @@ export default function GuidePage() {
                 <Button
                   onClick={() => setCurrentStep((s) => s + 1)}
                   disabled={currentStep === totalSteps - 1}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg sm:rounded-xl h-10 sm:h-11 px-3 sm:px-4 text-sm"
                 >
-                  {t('guide.next')}
-                  <ChevronRight className="w-4 h-4 ml-2" />
+                  <span className="hidden sm:inline">{t('guide.next')}</span>
+                  <ChevronRight className="w-4 h-4 sm:ml-2" />
                 </Button>
               </div>
             </div>
           ) : (
-            <motion.div key="list" className="space-y-6">
+            <motion.div key="list" className="space-y-4 sm:space-y-6">
               {content.steps.map((step) => (
                 <StepCard key={step.number} step={step} isActive={true} t={t} />
               ))}
@@ -367,18 +367,18 @@ export default function GuidePage() {
 
         {/* Payment CTA */}
         {!guide.hasFullAccess && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-12">
-            <Card className="border-0 bg-black rounded-3xl overflow-hidden">
-              <CardContent className="p-10 text-center">
-                <Lock className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">{t('guide.unlockComplete')}</h3>
-                <p className="text-gray-400 mb-6">{t('guide.allStepsPlus')}</p>
-                <div className="text-5xl font-bold text-white mb-8">3,99 €</div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 sm:mt-12">
+            <Card className="border-0 bg-black rounded-2xl sm:rounded-3xl overflow-hidden">
+              <CardContent className="p-6 sm:p-10 text-center">
+                <Lock className="w-10 h-10 sm:w-12 sm:h-12 text-gray-500 mx-auto mb-3 sm:mb-4" />
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('guide.unlockComplete')}</h3>
+                <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">{t('guide.allStepsPlus')}</p>
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-6 sm:mb-8">3,99 €</div>
                 <Button
                   size="lg"
                   onClick={handlePayment}
                   disabled={paymentLoading}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl h-14 px-8 font-semibold"
+                  className="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl h-12 sm:h-14 px-6 sm:px-8 font-semibold"
                 >
                   {paymentLoading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -396,33 +396,33 @@ export default function GuidePage() {
 
         {/* Troubleshooting */}
         {guide.hasFullAccess && content.troubleshooting?.length > 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-16">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center">
-                <Wrench className="w-6 h-6 text-gray-700" />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-10 sm:mt-16">
+            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                <Wrench className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
               </div>
-              <h2 className="text-2xl font-bold text-black">{t('guide.troubleshooting')}</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-black">{t('guide.troubleshooting')}</h2>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {content.troubleshooting.map((item, i) => (
-                <Card key={i} className="border-0 bg-white rounded-2xl shadow-sm">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <span className="text-red-500 font-bold">✕</span>
+                <Card key={i} className="border-0 bg-white rounded-xl sm:rounded-2xl shadow-sm">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-red-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span className="text-red-500 font-bold text-sm sm:text-base">✕</span>
                       </div>
                       <div>
-                        <p className="font-semibold text-black mb-1">{t('guide.problem')}</p>
-                        <p className="text-gray-600">{item.problem}</p>
+                        <p className="font-semibold text-black mb-1 text-sm sm:text-base">{t('guide.problem')}</p>
+                        <p className="text-gray-600 text-sm sm:text-base">{item.problem}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
                       </div>
                       <div>
-                        <p className="font-semibold text-black mb-1">{t('guide.solution')}</p>
-                        <p className="text-gray-600">{item.solution}</p>
+                        <p className="font-semibold text-black mb-1 text-sm sm:text-base">{t('guide.solution')}</p>
+                        <p className="text-gray-600 text-sm sm:text-base">{item.solution}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -434,24 +434,24 @@ export default function GuidePage() {
 
         {/* Conclusion */}
         {guide.hasFullAccess && content.conclusion && (
-          <Card className="mt-12 border-0 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl">
-            <CardContent className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+          <Card className="mt-8 sm:mt-12 border-0 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl sm:rounded-2xl">
+            <CardContent className="p-5 sm:p-8">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
                 </div>
-                <h2 className="text-xl font-bold text-green-800">{t('guide.congratulations')}</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-green-800">{t('guide.congratulations')}</h2>
               </div>
-              <p className="text-green-700 leading-relaxed">{content.conclusion}</p>
+              <p className="text-green-700 leading-relaxed text-sm sm:text-base">{content.conclusion}</p>
             </CardContent>
           </Card>
         )}
 
         {/* Rating */}
         {guide.hasFullAccess && (
-          <Card className="mt-12 border-0 bg-white rounded-2xl shadow-sm">
-            <CardContent className="py-10 text-center">
-              <p className="text-gray-700 font-semibold mb-6">{t('guide.ratingQuestion')}</p>
+          <Card className="mt-8 sm:mt-12 border-0 bg-white rounded-xl sm:rounded-2xl shadow-sm">
+            <CardContent className="py-8 sm:py-10 px-4 text-center">
+              <p className="text-gray-700 font-semibold mb-4 sm:mb-6 text-sm sm:text-base">{t('guide.ratingQuestion')}</p>
               <div className="flex justify-center">
                 <RatingStars onRate={(r) => console.log('Rating:', r)} successMessage={t('guide.ratingSuccess')} />
               </div>

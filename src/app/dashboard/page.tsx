@@ -95,21 +95,21 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-[#fafafa]">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-black rounded-xl flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-black rounded-lg sm:rounded-xl flex items-center justify-center">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
             </div>
-            <span className="text-lg font-semibold text-black">{t('common.brandName')}</span>
+            <span className="text-base sm:text-lg font-semibold text-black hidden sm:block">{t('common.brandName')}</span>
           </Link>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSwitcher variant="minimal" />
 
-            <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-full px-5 font-medium">
+            <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-full px-3 sm:px-5 font-medium text-sm sm:text-base">
               <Link href="/">
-                <Plus className="w-4 h-4 mr-2" />
-                {t('dashboard.newGuide')}
+                <Plus className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">{t('dashboard.newGuide')}</span>
               </Link>
             </Button>
 
@@ -138,17 +138,17 @@ export default function DashboardPage() {
         </nav>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
         {/* Welcome */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <h1 className="text-4xl font-bold text-black mb-3">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-3">
             {t('dashboard.welcome')}{user?.email ? `, ${user.email.split('@')[0]}` : ''}
           </h1>
-          <p className="text-gray-500 text-lg">
+          <p className="text-gray-500 text-base sm:text-lg">
             {t('dashboard.subtitle')}
           </p>
         </motion.div>
@@ -158,21 +158,21 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+          className="grid grid-cols-3 gap-2 sm:gap-4 mb-8 sm:mb-12"
         >
           {[
             { icon: BookOpen, label: t('dashboard.stats.total'), value: guides.length, color: 'bg-gray-100', iconColor: 'text-gray-700' },
             { icon: CheckCircle, label: t('dashboard.stats.complete'), value: completedGuides, color: 'bg-green-100', iconColor: 'text-green-600' },
             { icon: Lock, label: t('dashboard.stats.preview'), value: previewGuides, color: 'bg-amber-100', iconColor: 'text-amber-600' },
           ].map((stat, i) => (
-            <Card key={i} className="border-0 bg-white rounded-2xl shadow-sm">
-              <CardContent className="p-6 flex items-center gap-5">
-                <div className={`w-14 h-14 ${stat.color} rounded-2xl flex items-center justify-center`}>
-                  <stat.icon className={`w-7 h-7 ${stat.iconColor}`} />
+            <Card key={i} className="border-0 bg-white rounded-xl sm:rounded-2xl shadow-sm">
+              <CardContent className="p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${stat.color} rounded-xl sm:rounded-2xl flex items-center justify-center`}>
+                  <stat.icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ${stat.iconColor}`} />
                 </div>
-                <div>
-                  <p className="text-3xl font-bold text-black">{stat.value}</p>
-                  <p className="text-gray-500">{stat.label}</p>
+                <div className="text-center sm:text-left">
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold text-black">{stat.value}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm md:text-base">{stat.label}</p>
                 </div>
               </CardContent>
             </Card>
@@ -180,14 +180,14 @@ export default function DashboardPage() {
         </motion.div>
 
         {/* Guides */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-black">{t('dashboard.myGuides')}</h2>
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-black">{t('dashboard.myGuides')}</h2>
         </div>
 
         {isLoading ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[1, 2, 3].map((i) => (
-              <Skeleton key={i} className="h-48 rounded-2xl" />
+              <Skeleton key={i} className="h-40 sm:h-48 rounded-xl sm:rounded-2xl" />
             ))}
           </div>
         ) : guides.length === 0 ? (
@@ -195,20 +195,20 @@ export default function DashboardPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <Card className="border-0 bg-white rounded-3xl shadow-sm">
-              <CardContent className="py-20 text-center">
-                <div className="w-20 h-20 bg-gray-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-10 h-10 text-gray-400" />
+            <Card className="border-0 bg-white rounded-2xl sm:rounded-3xl shadow-sm">
+              <CardContent className="py-12 sm:py-20 px-4 sm:px-6 text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
                 </div>
-                <h2 className="text-xl font-bold text-black mb-3">
+                <h2 className="text-lg sm:text-xl font-bold text-black mb-2 sm:mb-3">
                   {t('dashboard.noGuides')}
                 </h2>
-                <p className="text-gray-500 mb-8 max-w-md mx-auto">
+                <p className="text-gray-500 text-sm sm:text-base mb-6 sm:mb-8 max-w-md mx-auto">
                   {t('dashboard.noGuidesDescription')}
                 </p>
-                <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl h-12 px-6 font-medium">
+                <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl h-11 sm:h-12 px-5 sm:px-6 font-medium text-sm sm:text-base">
                   <Link href="/">
-                    <Sparkles className="w-5 h-5 mr-2" />
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     {t('dashboard.analyzeFirst')}
                   </Link>
                 </Button>
@@ -220,7 +220,7 @@ export default function DashboardPage() {
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             <AnimatePresence>
               {guides.map((guide) => (
