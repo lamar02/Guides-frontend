@@ -1,0 +1,191 @@
+{
+  "common": {
+    "brandName": "guides.ai",
+    "loading": "Loading...",
+    "error": "Error",
+    "back": "Back",
+    "home": "Home",
+    "login": "Sign in",
+    "register": "Sign up",
+    "logout": "Sign out",
+    "dashboard": "Dashboard",
+    "getStarted": "Get started",
+    "learnMore": "Learn more",
+    "tryFree": "Try for free",
+    "securePayment": "Secure payment",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "copyright": "© 2026 guides.ai"
+  },
+  "home": {
+    "badge": "Powered by AI",
+    "heroTitle": "Your manuals,",
+    "heroTitleHighlight": "simplified",
+    "heroDescription": "Transform any PDF manual into a clear, step-by-step installation guide. Simple, fast, intelligent.",
+    "features": {
+      "freePreview": "Free preview",
+      "oneTimePayment": "One-time payment",
+      "permanentAccess": "Permanent access"
+    },
+    "form": {
+      "title": "Analyze your PDF",
+      "subtitle": "Paste the link to your manual to get started",
+      "urlLabel": "Document URL",
+      "urlPlaceholder": "https://example.com/manual.pdf",
+      "urlError": "Please enter a valid URL",
+      "titleLabel": "Guide title",
+      "titleOptional": "(optional)",
+      "titlePlaceholder": "e.g., Samsung TV Setup Guide",
+      "submitButton": "Analyze document",
+      "analyzing": "Analyzing...",
+      "footer": "Free trial • No card required"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Three simple steps",
+      "step1": {
+        "title": "Paste the link",
+        "description": "Provide the URL of your online PDF manual"
+      },
+      "step2": {
+        "title": "AI Analysis",
+        "description": "Our AI extracts and structures the content automatically"
+      },
+      "step3": {
+        "title": "Guide ready",
+        "description": "Get a clear, practical step-by-step guide"
+      }
+    },
+    "pricing": {
+      "label": "Simple pricing",
+      "title": "One price,",
+      "titleHighlight": "lifetime access.",
+      "description": "No subscription. Pay once per guide and keep it forever.",
+      "perGuide": "Per guide",
+      "features": {
+        "complete": "Complete detailed guide",
+        "expert": "Expert tips",
+        "troubleshooting": "Troubleshooting section",
+        "permanent": "Permanent access"
+      },
+      "cta": "Create an account"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Access your account",
+      "subtitleRedirect": "Sign in to continue",
+      "welcomeBack": "Welcome",
+      "welcomeBackHighlight": "back",
+      "welcomeDescription": "Sign in to access your guides and continue transforming your manuals.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "Invalid email",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "passwordError": "Password must be at least 8 characters",
+      "submitButton": "Sign in",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "success": "Successfully signed in!"
+    },
+    "register": {
+      "title": "Sign up",
+      "subtitle": "Create your account in seconds",
+      "createYour": "Create your",
+      "createHighlight": "account",
+      "welcomeDescription": "Join thousands of users who simplify their manuals.",
+      "benefits": {
+        "free": "Free to start",
+        "noCard": "No card required",
+        "instant": "Instant access"
+      },
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "••••••••",
+      "confirmPasswordError": "Passwords don't match",
+      "submitButton": "Create my account",
+      "submitting": "Creating...",
+      "hasAccount": "Already have an account?",
+      "success": "Account created successfully!"
+    }
+  },
+  "preview": {
+    "notFound": "Preview not found",
+    "notFoundDescription": "This preview has expired or doesn't exist.",
+    "processing": "Analyzing...",
+    "processingDescription": "This page will refresh automatically",
+    "validFor": "Preview valid 24h",
+    "stepsPreview": "Steps preview",
+    "introduction": "Introduction",
+    "moreSteps": "+ {count} additional steps",
+    "includingTroubleshooting": "Including troubleshooting guide",
+    "unlockFull": "Full guide",
+    "unlockDescription": "All detailed steps",
+    "features": {
+      "complete": "Complete guide",
+      "expert": "Expert tips",
+      "troubleshooting": "Troubleshooting included",
+      "permanent": "Permanent access"
+    },
+    "unlockButton": "Unlock the guide",
+    "redirecting": "Redirecting...",
+    "paymentError": "Payment error"
+  },
+  "dashboard": {
+    "welcome": "Hello",
+    "subtitle": "Manage your installation guides",
+    "stats": {
+      "total": "Total",
+      "complete": "Complete",
+      "preview": "Preview"
+    },
+    "myGuides": "My guides",
+    "noGuides": "No guides yet",
+    "noGuidesDescription": "Create your first guide by analyzing a PDF",
+    "analyzeFirst": "Analyze my first PDF",
+    "newGuide": "New guide",
+    "open": "Open",
+    "complete": "Complete",
+    "previewBadge": "Preview"
+  },
+  "guide": {
+    "steps": "Steps",
+    "stepOf": "Step {current} of {total}",
+    "previous": "Previous",
+    "next": "Next",
+    "tips": "Tips",
+    "warning": "Warning",
+    "troubleshooting": "Troubleshooting",
+    "problem": "Problem",
+    "solution": "Solution",
+    "congratulations": "Congratulations!",
+    "ratingQuestion": "Was this guide helpful?",
+    "ratingSuccess": "Thank you for your feedback!",
+    "linkCopied": "Link copied!",
+    "contentNotAvailable": "Content not available",
+    "unlockComplete": "Unlock the complete guide",
+    "allStepsPlus": "All steps + Troubleshooting guide",
+    "buyNow": "Buy now"
+  },
+  "payment": {
+    "verifying": "Verifying payment...",
+    "verifyingDescription": "This will only take a few seconds",
+    "success": "Payment successful!",
+    "successDescription": "You now have access to the complete guide",
+    "viewGuide": "View complete guide",
+    "backToDashboard": "Back to dashboard",
+    "processing": "Processing",
+    "processingDescription": "Your payment is being verified. Access will be available in a few moments."
+  },
+  "errors": {
+    "connectionError": "Connection error",
+    "genericError": "An error occurred",
+    "guideNotFound": "Guide not found"
+  }
+}

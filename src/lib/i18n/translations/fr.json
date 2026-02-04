@@ -1,0 +1,191 @@
+{
+  "common": {
+    "brandName": "guides.ai",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "back": "Retour",
+    "home": "Accueil",
+    "login": "Connexion",
+    "register": "Inscription",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "getStarted": "Commencer",
+    "learnMore": "En savoir plus",
+    "tryFree": "Essayer gratuitement",
+    "securePayment": "Paiement sécurisé",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "contact": "Contact",
+    "copyright": "© 2026 guides.ai"
+  },
+  "home": {
+    "badge": "Propulsé par l'IA",
+    "heroTitle": "Vos manuels,",
+    "heroTitleHighlight": "simplifiés",
+    "heroDescription": "Transformez n'importe quel manuel PDF en guide d'installation étape par étape. Simple, rapide, intelligent.",
+    "features": {
+      "freePreview": "Preview gratuite",
+      "oneTimePayment": "Paiement unique",
+      "permanentAccess": "Accès permanent"
+    },
+    "form": {
+      "title": "Analysez votre PDF",
+      "subtitle": "Collez le lien de votre manuel pour commencer",
+      "urlLabel": "URL du document",
+      "urlPlaceholder": "https://exemple.com/manuel.pdf",
+      "urlError": "Veuillez entrer une URL valide",
+      "titleLabel": "Titre du guide",
+      "titleOptional": "(optionnel)",
+      "titlePlaceholder": "Ex: Guide TV Samsung",
+      "submitButton": "Analyser le document",
+      "analyzing": "Analyse en cours...",
+      "footer": "Essai gratuit • Aucune carte requise"
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "subtitle": "Trois étapes simples",
+      "step1": {
+        "title": "Collez le lien",
+        "description": "Fournissez l'URL de votre manuel PDF en ligne"
+      },
+      "step2": {
+        "title": "Analyse IA",
+        "description": "Notre IA extrait et structure le contenu automatiquement"
+      },
+      "step3": {
+        "title": "Guide prêt",
+        "description": "Obtenez un guide étape par étape clair et pratique"
+      }
+    },
+    "pricing": {
+      "label": "Tarification simple",
+      "title": "Un prix unique,",
+      "titleHighlight": "accès à vie.",
+      "description": "Pas d'abonnement. Payez une fois par guide et gardez-le pour toujours.",
+      "perGuide": "Par guide",
+      "features": {
+        "complete": "Guide complet détaillé",
+        "expert": "Conseils d'expert",
+        "troubleshooting": "Section dépannage",
+        "permanent": "Accès permanent"
+      },
+      "cta": "Créer un compte"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Accédez à votre compte",
+      "subtitleRedirect": "Connectez-vous pour continuer",
+      "welcomeBack": "Bienvenue",
+      "welcomeBackHighlight": "de retour",
+      "welcomeDescription": "Connectez-vous pour accéder à vos guides et continuer à transformer vos manuels.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "vous@exemple.com",
+      "emailError": "Email invalide",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "passwordError": "Le mot de passe doit contenir au moins 8 caractères",
+      "submitButton": "Se connecter",
+      "submitting": "Connexion...",
+      "noAccount": "Pas encore de compte ?",
+      "success": "Connexion réussie !"
+    },
+    "register": {
+      "title": "Inscription",
+      "subtitle": "Créez votre compte en quelques secondes",
+      "createYour": "Créez votre",
+      "createHighlight": "compte",
+      "welcomeDescription": "Rejoignez des milliers d'utilisateurs qui simplifient leurs manuels.",
+      "benefits": {
+        "free": "Gratuit pour commencer",
+        "noCard": "Pas de carte requise",
+        "instant": "Accès instantané"
+      },
+      "emailLabel": "Email",
+      "emailPlaceholder": "vous@exemple.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "Au moins 8 caractères",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "confirmPasswordPlaceholder": "••••••••",
+      "confirmPasswordError": "Les mots de passe ne correspondent pas",
+      "submitButton": "Créer mon compte",
+      "submitting": "Création...",
+      "hasAccount": "Déjà un compte ?",
+      "success": "Compte créé avec succès !"
+    }
+  },
+  "preview": {
+    "notFound": "Preview non trouvée",
+    "notFoundDescription": "Cette preview a expiré ou n'existe pas.",
+    "processing": "Analyse en cours...",
+    "processingDescription": "Cette page se rafraîchira automatiquement",
+    "validFor": "Preview valide 24h",
+    "stepsPreview": "Aperçu des étapes",
+    "introduction": "Introduction",
+    "moreSteps": "+ {count} étapes supplémentaires",
+    "includingTroubleshooting": "Incluant le guide de dépannage",
+    "unlockFull": "Guide complet",
+    "unlockDescription": "Toutes les étapes détaillées",
+    "features": {
+      "complete": "Guide complet",
+      "expert": "Conseils d'expert",
+      "troubleshooting": "Dépannage inclus",
+      "permanent": "Accès permanent"
+    },
+    "unlockButton": "Débloquer le guide",
+    "redirecting": "Redirection...",
+    "paymentError": "Erreur de paiement"
+  },
+  "dashboard": {
+    "welcome": "Bonjour",
+    "subtitle": "Gérez vos guides d'installation",
+    "stats": {
+      "total": "Total",
+      "complete": "Complets",
+      "preview": "Preview"
+    },
+    "myGuides": "Mes guides",
+    "noGuides": "Aucun guide pour le moment",
+    "noGuidesDescription": "Créez votre premier guide en analysant un PDF",
+    "analyzeFirst": "Analyser mon premier PDF",
+    "newGuide": "Nouveau guide",
+    "open": "Ouvrir",
+    "complete": "Complet",
+    "previewBadge": "Preview"
+  },
+  "guide": {
+    "steps": "Étapes",
+    "stepOf": "Étape {current} sur {total}",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "tips": "Conseils",
+    "warning": "Attention",
+    "troubleshooting": "Dépannage",
+    "problem": "Problème",
+    "solution": "Solution",
+    "congratulations": "Félicitations !",
+    "ratingQuestion": "Ce guide vous a-t-il été utile ?",
+    "ratingSuccess": "Merci pour votre avis !",
+    "linkCopied": "Lien copié !",
+    "contentNotAvailable": "Contenu non disponible",
+    "unlockComplete": "Débloquez le guide complet",
+    "allStepsPlus": "Toutes les étapes + Guide de dépannage",
+    "buyNow": "Acheter maintenant"
+  },
+  "payment": {
+    "verifying": "Vérification du paiement...",
+    "verifyingDescription": "Cela ne prendra que quelques secondes",
+    "success": "Paiement réussi !",
+    "successDescription": "Vous avez maintenant accès au guide complet",
+    "viewGuide": "Voir le guide complet",
+    "backToDashboard": "Retour au tableau de bord",
+    "processing": "Traitement en cours",
+    "processingDescription": "Votre paiement est en cours de vérification. L'accès sera disponible dans quelques instants."
+  },
+  "errors": {
+    "connectionError": "Erreur de connexion",
+    "genericError": "Une erreur est survenue",
+    "guideNotFound": "Guide non trouvé"
+  }
+}
