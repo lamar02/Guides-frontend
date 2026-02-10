@@ -29,7 +29,7 @@
     },
     "features": {
       "freePreview": "Free preview",
-      "oneTimePayment": "One-time payment",
+      "oneTimePayment": "From $2.99/guide",
       "permanentAccess": "Permanent access"
     },
     "form": {
@@ -76,7 +76,7 @@
       },
       "step3": {
         "title": "Unlock the guide",
-        "description": "One-time payment of 3.99 euros"
+        "description": "Starting at $2.99 per guide"
       }
     },
     "benefits": {
@@ -96,8 +96,8 @@
           "description": "Try before you pay"
         },
         "permanent": {
-          "title": "Permanent access",
-          "description": "One payment, no subscription"
+          "title": "Flexible pricing",
+          "description": "Pay per guide or subscribe monthly"
         }
       }
     },
@@ -161,17 +161,34 @@
       }
     },
     "pricing": {
-      "label": "Simple pricing",
-      "title": "One price,",
-      "titleHighlight": "lifetime access.",
-      "description": "No subscription. Pay once per guide and keep it forever.",
+      "label": "Flexible pricing",
+      "title": "Choose your",
+      "titleHighlight": "plan.",
+      "description": "Pay per guide or go unlimited with a monthly subscription.",
       "perGuide": "Per guide",
+      "perMonth": "/ month",
+      "popular": "Most popular",
       "features": {
         "complete": "Complete detailed guide",
         "expert": "Expert tips",
         "troubleshooting": "Troubleshooting section",
         "permanent": "Permanent access",
         "multilang": "Multi-language EN/FR"
+      },
+      "plans": {
+        "single": {
+          "name": "Single Guide",
+          "description": "Perfect for a one-time need",
+          "cta": "Create my guide"
+        },
+        "subscription": {
+          "name": "Unlimited",
+          "description": "Unlimited guides, cancel anytime",
+          "feature1": "Unlimited guide generation",
+          "feature2": "Full access to all guides",
+          "feature3": "Cancel anytime",
+          "cta": "Subscribe now"
+        }
       },
       "cta": "Create my guide",
       "guarantee": "Free preview before payment"
@@ -308,7 +325,9 @@
     "newGuide": "New guide",
     "open": "Open",
     "complete": "Complete",
-    "previewBadge": "Preview"
+    "previewBadge": "Preview",
+    "subscriptionActive": "Unlimited Plan",
+    "subscriptionBadge": "Subscribed"
   },
   "guide": {
     "steps": "Steps",
@@ -327,7 +346,8 @@
     "contentNotAvailable": "Content not available",
     "unlockComplete": "Unlock the complete guide",
     "allStepsPlus": "All steps + Troubleshooting guide",
-    "buyNow": "Buy now"
+    "buyNow": "Buy now",
+    "orSubscribe": "Or $9.99/mo for unlimited access"
   },
   "payment": {
     "verifying": "Verifying payment...",
@@ -337,11 +357,45 @@
     "viewGuide": "View complete guide",
     "backToDashboard": "Back to dashboard",
     "processing": "Processing",
-    "processingDescription": "Your payment is being verified. Access will be available in a few moments."
+    "processingDescription": "Your payment is being verified. Access will be available in a few moments.",
+    "subscriptionSuccess": "Subscription activated!",
+    "subscriptionSuccessDescription": "You now have unlimited access to all guides. Start analyzing your PDFs!",
+    "goToDashboard": "Go to dashboard",
+    "analyzeNow": "Analyze a PDF"
+  },
+  "newGuide": {
+    "title": "Create a new guide",
+    "subtitle": "Paste a URL or upload your PDF manual",
+    "tabUrl": "Paste URL",
+    "tabUpload": "Upload PDF",
+    "urlPlaceholder": "https://example.com/manual.pdf",
+    "titleLabel": "Guide title",
+    "titleOptional": "(optional)",
+    "titlePlaceholder": "e.g., Samsung TV Setup Guide",
+    "dropzone": "Drag & drop your PDF here",
+    "dropzoneSub": "or click to browse",
+    "maxSize": "PDF only, max 10 MB",
+    "uploading": "Uploading...",
+    "analyzing": "Analyzing document...",
+    "fileSelected": "File selected",
+    "submit": "Analyze document",
+    "backToDashboard": "Back to dashboard",
+    "steps": {
+      "uploading": "Uploading file...",
+      "connecting": "Connecting to document...",
+      "extracting": "Extracting text...",
+      "aiAnalysis": "AI analysis in progress...",
+      "generating": "Generating guide..."
+    }
   },
   "errors": {
     "connectionError": "Connection error",
     "genericError": "An error occurred",
-    "guideNotFound": "Guide not found"
+    "guideNotFound": "Guide not found",
+    "scannedPdf": "This PDF appears to be a scanned document (image-based). Please upload a PDF with selectable text.",
+    "extractionFailed": "We couldn't extract enough text from this PDF. Make sure the document contains readable text content.",
+    "invalidContent": "The extracted content appears to be invalid or corrupted. Please try with a different PDF.",
+    "processingFailed": "An error occurred while processing your document. Please try again.",
+    "scannedPdfTip": "Tip: Open the PDF and try selecting text. If you can't, it's a scanned document."
   }
 }

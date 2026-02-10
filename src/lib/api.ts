@@ -77,6 +77,10 @@ class ApiClient {
     });
   }
 
+  async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
+    return this.request<T>(endpoint, { method: 'DELETE' });
+  }
+
   async postFormData<T>(endpoint: string, formData: FormData): Promise<ApiResponse<T>> {
     const apiKey = this.getApiKey();
     const headers: HeadersInit = {};

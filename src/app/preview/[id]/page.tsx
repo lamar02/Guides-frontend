@@ -24,6 +24,7 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useTranslation } from '@/contexts/LanguageContext';
 import { publicService, PreviewData } from '@/services/public';
 import { useAuth } from '@/hooks/useAuth';
+import { useSubscription } from '@/hooks/useSubscription';
 import { paymentsService } from '@/services/payments';
 
 export default function PreviewPage() {
@@ -31,10 +32,12 @@ export default function PreviewPage() {
   const router = useRouter();
   const { t } = useTranslation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { subscribe } = useSubscription();
   const [preview, setPreview] = useState<PreviewData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
 
   const previewId = params.id as string;
 
@@ -276,8 +279,8 @@ export default function PreviewPage() {
                     <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">{t('preview.unlockDescription')}</p>
 
                     <div className="flex items-baseline gap-1 mb-6 sm:mb-8">
-                      <span className="text-4xl sm:text-5xl font-bold">3,99</span>
-                      <span className="text-lg sm:text-xl text-gray-400">€</span>
+                      <span className="text-lg sm:text-xl text-gray-400">$</span>
+                      <span className="text-4xl sm:text-5xl font-bold">2.99</span>
                     </div>
 
                     <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
@@ -317,6 +320,26 @@ export default function PreviewPage() {
                       <Shield className="w-4 h-4" />
                       {t('common.securePayment')}
                     </p>
+                    <button
+                      onClick={async () => {
+                        if (!isAuthenticated) {
+                          localStorage.setItem('pendingPreviewId', previewId);
+                          router.push(`/register?redirect=/preview/${previewId}`);
+                          return;
+                        }
+                        setSubscribeLoading(true);
+                        try {
+                          await subscribe();
+                        } catch {
+                          toast.error(t('errors.genericError'));
+                          setSubscribeLoading(false);
+                        }
+                      }}
+                      disabled={subscribeLoading}
+                      className="text-center text-yellow-400 hover:text-yellow-300 text-xs mt-2 underline underline-offset-2 transition-colors disabled:opacity-50 w-full"
+                    >
+                      {subscribeLoading ? t('preview.redirecting') : t('guide.orSubscribe')}
+                    </button>
                   </CardContent>
                 </Card>
               </motion.div>

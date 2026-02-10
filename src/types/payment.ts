@@ -19,3 +19,27 @@ export interface Transaction {
     productName: string;
   };
 }
+
+export interface SubscriptionSession {
+  subscriptionId: string;
+  checkoutUrl: string;
+  amount: number;
+  currency: string;
+}
+
+export interface Subscription {
+  id: string;
+  userId: string;
+  status: 'pending' | 'active' | 'cancelled' | 'expired' | 'past_due';
+  provider: string;
+  providerSubscriptionId: string | null;
+  currentPeriodStart: string | null;
+  currentPeriodEnd: string | null;
+  cancelledAt: string | null;
+  createdAt: string;
+}
+
+export interface SubscriptionStatus {
+  isActive: boolean;
+  subscription: Subscription | null;
+}

@@ -13,7 +13,8 @@ import {
   Loader2,
   Sparkles,
   LogOut,
-  ArrowUpRight
+  ArrowUpRight,
+  Crown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -29,6 +30,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useTranslation } from '@/contexts/LanguageContext';
 import { useAuth } from '@/hooks/useAuth';
+import { useSubscription } from '@/hooks/useSubscription';
 import { guidesService } from '@/services/guides';
 import { Guide } from '@/types/guide';
 
@@ -47,6 +49,7 @@ const itemVariants = {
 
 export default function DashboardPage() {
   const { isAuthenticated, isLoading: authLoading, user, logout } = useAuth();
+  const { isSubscribed } = useSubscription();
   const router = useRouter();
   const { t } = useTranslation();
   const [guides, setGuides] = useState<Guide[]>([]);
@@ -107,7 +110,7 @@ export default function DashboardPage() {
             <LanguageSwitcher variant="minimal" />
 
             <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-full px-3 sm:px-5 font-medium text-sm sm:text-base">
-              <Link href="/">
+              <Link href="/guides/new">
                 <Plus className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">{t('dashboard.newGuide')}</span>
               </Link>
@@ -145,9 +148,17 @@ export default function DashboardPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 sm:mb-12"
         >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-3">
-            {t('dashboard.welcome')}{user?.email ? `, ${user.email.split('@')[0]}` : ''}
-          </h1>
+          <div className="flex flex-wrap items-center gap-3 mb-2 sm:mb-3">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">
+              {t('dashboard.welcome')}{user?.email ? `, ${user.email.split('@')[0]}` : ''}
+            </h1>
+            {isSubscribed && (
+              <span className="flex items-center gap-1.5 px-3 py-1 bg-yellow-100 rounded-full text-xs sm:text-sm font-semibold text-yellow-700">
+                <Crown className="w-3.5 h-3.5" />
+                {t('dashboard.subscriptionBadge')}
+              </span>
+            )}
+          </div>
           <p className="text-gray-500 text-base sm:text-lg">
             {t('dashboard.subtitle')}
           </p>
@@ -207,7 +218,7 @@ export default function DashboardPage() {
                   {t('dashboard.noGuidesDescription')}
                 </p>
                 <Button asChild className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl h-11 sm:h-12 px-5 sm:px-6 font-medium text-sm sm:text-base">
-                  <Link href="/">
+                  <Link href="/guides/new">
                     <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     {t('dashboard.analyzeFirst')}
                   </Link>

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { CheckCircle, Clock, Loader2, BookOpen, ArrowRight } from 'lucide-react';
+import { CheckCircle, Clock, Loader2, BookOpen, ArrowRight, Crown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from '@/contexts/LanguageContext';
@@ -19,6 +19,7 @@ function PaymentSuccessContent() {
   const { t } = useTranslation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const guideId = searchParams.get('guideId');
+  const isSubscription = searchParams.get('subscription') === 'true';
   const confettiTriggered = useRef(false);
 
   const [guide, setGuide] = useState<Guide | null>(null);
@@ -62,6 +63,12 @@ function PaymentSuccessContent() {
   }, [authLoading, isAuthenticated, router]);
 
   useEffect(() => {
+    if (isSubscription && isAuthenticated) {
+      setIsLoading(false);
+      triggerConfetti();
+      return;
+    }
+
     if (!guideId || !isAuthenticated) return;
 
     const checkAccess = async () => {
@@ -83,7 +90,7 @@ function PaymentSuccessContent() {
     };
 
     checkAccess();
-  }, [guideId, retryCount, isAuthenticated]);
+  }, [guideId, retryCount, isAuthenticated, isSubscription]);
 
   if (authLoading) {
     return (
@@ -122,6 +129,72 @@ function PaymentSuccessContent() {
               />
             ))}
           </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (isSubscription && !isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fafafa] p-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md"
+        >
+          <Card className="border-0 shadow-2xl rounded-3xl overflow-hidden">
+            <CardContent className="p-10 text-center">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+                className="relative mb-8"
+              >
+                <div className="w-28 h-28 bg-yellow-100 rounded-full flex items-center justify-center mx-auto">
+                  <Crown className="w-16 h-16 text-yellow-500" />
+                </div>
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute -top-2 -right-2 w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center shadow-lg"
+                >
+                  <CheckCircle className="w-7 h-7 text-white" />
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <h1 className="text-3xl font-bold text-black mb-4">
+                  {t('payment.subscriptionSuccess')}
+                </h1>
+                <p className="text-gray-500 mb-8">
+                  {t('payment.subscriptionSuccessDescription')}
+                </p>
+
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full h-14 text-base font-semibold bg-yellow-400 hover:bg-yellow-500 text-black rounded-xl"
+                >
+                  <Link href="/">
+                    <Sparkles className="w-5 h-5 mr-2" />
+                    {t('payment.analyzeNow')}
+                  </Link>
+                </Button>
+
+                <Button variant="ghost" asChild className="w-full mt-4 text-gray-500 hover:text-black">
+                  <Link href="/dashboard">
+                    {t('payment.goToDashboard')}
+                  </Link>
+                </Button>
+              </motion.div>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     );

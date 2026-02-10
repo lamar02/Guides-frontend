@@ -30,6 +30,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useTranslation } from '@/contexts/LanguageContext';
 import { useAuth } from '@/hooks/useAuth';
 import { usePayment } from '@/hooks/usePayment';
+import { useSubscription } from '@/hooks/useSubscription';
 import { guidesService } from '@/services/guides';
 import { Guide, GuideStep } from '@/types/guide';
 
@@ -131,7 +132,9 @@ export default function GuidePage() {
   const { t } = useTranslation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { initiatePayment, isLoading: paymentLoading } = usePayment();
+  const { subscribe } = useSubscription();
   const [guide, setGuide] = useState<Guide | null>(null);
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [currentStep, setCurrentStep] = useState(0);
@@ -373,7 +376,7 @@ export default function GuidePage() {
                 <Lock className="w-10 h-10 sm:w-12 sm:h-12 text-gray-500 mx-auto mb-3 sm:mb-4" />
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{t('guide.unlockComplete')}</h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">{t('guide.allStepsPlus')}</p>
-                <div className="text-4xl sm:text-5xl font-bold text-white mb-6 sm:mb-8">3,99 €</div>
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-6 sm:mb-8">$2.99</div>
                 <Button
                   size="lg"
                   onClick={handlePayment}
@@ -389,6 +392,21 @@ export default function GuidePage() {
                     </>
                   )}
                 </Button>
+                <button
+                  onClick={async () => {
+                    setSubscribeLoading(true);
+                    try {
+                      await subscribe();
+                    } catch {
+                      toast.error(t('errors.genericError'));
+                      setSubscribeLoading(false);
+                    }
+                  }}
+                  disabled={subscribeLoading}
+                  className="text-yellow-500 hover:text-yellow-400 text-sm mt-4 underline underline-offset-2 transition-colors disabled:opacity-50"
+                >
+                  {subscribeLoading ? t('preview.redirecting') : t('guide.orSubscribe')}
+                </button>
               </CardContent>
             </Card>
           </motion.div>

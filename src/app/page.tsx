@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, useCallback, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -45,16 +45,27 @@ import { Card, CardContent } from '@/components/ui/card';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useTranslation } from '@/contexts/LanguageContext';
 import { useAuth } from '@/hooks/useAuth';
+import { useSubscription } from '@/hooks/useSubscription';
 import { publicService } from '@/services/public';
 
-export default function HomePage() {
+function HomePageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { t, locale } = useTranslation();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { subscribe, isSubscribed } = useSubscription();
   const [isLoading, setIsLoading] = useState(false);
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Auto-trigger subscription after register redirect
+  useEffect(() => {
+    if (searchParams.get('subscribe') === 'true' && isAuthenticated && !authLoading && !isSubscribed) {
+      subscribe();
+    }
+  }, [searchParams, isAuthenticated, authLoading, isSubscribed, subscribe]);
 
   const loadingSteps = locale === 'fr'
     ? ['Connexion au document...', 'Extraction du texte...', 'Analyse IA en cours...', 'Generation du guide...']
@@ -87,6 +98,34 @@ export default function HomePage() {
     resolver: zodResolver(analyzeSchema)
   });
 
+  const getErrorMessage = (error: unknown): string => {
+    const msg = error instanceof Error ? error.message : '';
+    const msgLower = msg.toLowerCase();
+
+    // Scanned PDF / 0 words extracted
+    if (msgLower.includes('extraction insuffisante') || msgLower.includes('0 mots')) {
+      return `${t('errors.scannedPdf')}\n\n${t('errors.scannedPdfTip')}`;
+    }
+    // OCR needed / scanned detected
+    if (msgLower.includes('ocr') || msgLower.includes('scanné') || msgLower.includes('scanned') || msgLower.includes('image')) {
+      return t('errors.scannedPdf');
+    }
+    // Invalid/corrupted content
+    if (msgLower.includes('invalide') || msgLower.includes('corrompu') || msgLower.includes('invalid') || msgLower.includes('corrupted')) {
+      return t('errors.invalidContent');
+    }
+    // Generic extraction failure
+    if (msgLower.includes('extraction') || msgLower.includes('extract')) {
+      return t('errors.extractionFailed');
+    }
+    // Processing failure
+    if (msgLower.includes('process') || msgLower.includes('traitement')) {
+      return t('errors.processingFailed');
+    }
+
+    return msg || t('errors.genericError');
+  };
+
   const onSubmit = async (data: AnalyzeFormData) => {
     setIsLoading(true);
     try {
@@ -94,7 +133,7 @@ export default function HomePage() {
       toast.success(locale === 'fr' ? 'Document analyse avec succes !' : 'Document analyzed successfully!');
       router.push(`/preview/${result.sessionToken}`);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : t('errors.genericError'));
+      toast.error(getErrorMessage(err), { duration: 8000 });
       setIsLoading(false);
     }
   };
@@ -728,33 +767,77 @@ export default function HomePage() {
 
       {/* ===== SECTION 8: PRICING ===== */}
       <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-10 sm:mb-14"
           >
-            <Card className="bg-black text-white rounded-2xl sm:rounded-3xl overflow-hidden">
-              <CardContent className="p-8 sm:p-12 md:p-16 text-center">
-                <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase mb-4 block">
-                  {t('home.pricing.label')}
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  {t('home.pricing.title')} {t('home.pricing.titleHighlight')}
-                </h2>
-                <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                  {t('home.pricing.description')}
-                </p>
+            <span className="text-yellow-500 font-semibold text-sm tracking-wider uppercase mb-4 block">
+              {t('home.pricing.label')}
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
+              {t('home.pricing.title')} <span className="text-yellow-500">{t('home.pricing.titleHighlight')}</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-lg mx-auto">
+              {t('home.pricing.description')}
+            </p>
+          </motion.div>
 
-                <div className="inline-block bg-white/10 backdrop-blur rounded-2xl p-8 mb-8">
-                  <p className="text-gray-400 mb-2">{t('home.pricing.perGuide')}</p>
-                  <div className="flex items-baseline justify-center gap-1 mb-6">
-                    <span className="text-6xl sm:text-7xl font-bold">3.99</span>
-                    <span className="text-2xl">€</span>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {/* Single Guide Plan */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <Card className="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl h-full">
+                <CardContent className="p-6 sm:p-10 flex flex-col h-full">
+                  <h3 className="text-xl font-bold text-black mb-2">{t('home.pricing.plans.single.name')}</h3>
+                  <p className="text-gray-500 text-sm mb-6">{t('home.pricing.plans.single.description')}</p>
+
+                  <div className="flex items-baseline gap-1 mb-6">
+                    <span className="text-5xl sm:text-6xl font-bold text-black">2.99</span>
+                    <span className="text-xl text-gray-400">$</span>
                   </div>
 
-                  <div className="space-y-3 text-left mb-6">
+                  <div className="space-y-3 text-left mb-8 flex-1">
                     {['complete', 'expert', 'troubleshooting', 'permanent', 'multilang'].map((item) => (
+                      <div key={item} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <span className="text-gray-600">{t(`home.pricing.features.${item}`)}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Button onClick={scrollToForm} size="lg" className="w-full bg-black hover:bg-gray-900 text-white font-semibold rounded-xl h-14">
+                    {t('home.pricing.plans.single.cta')}
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Subscription Plan */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+              <Card className="bg-black text-white rounded-2xl sm:rounded-3xl h-full relative overflow-hidden">
+                <div className="absolute top-4 right-4 px-3 py-1 bg-yellow-400 text-black text-xs font-bold rounded-full">
+                  {t('home.pricing.popular')}
+                </div>
+                <CardContent className="p-6 sm:p-10 flex flex-col h-full">
+                  <h3 className="text-xl font-bold mb-2">{t('home.pricing.plans.subscription.name')}</h3>
+                  <p className="text-gray-400 text-sm mb-6">{t('home.pricing.plans.subscription.description')}</p>
+
+                  <div className="flex items-baseline gap-1 mb-6">
+                    <span className="text-5xl sm:text-6xl font-bold">9.99</span>
+                    <span className="text-xl text-gray-400">$ {t('home.pricing.perMonth')}</span>
+                  </div>
+
+                  <div className="space-y-3 text-left mb-8 flex-1">
+                    {['feature1', 'feature2', 'feature3'].map((item) => (
+                      <div key={item} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                        <span className="text-gray-300">{t(`home.pricing.plans.subscription.${item}`)}</span>
+                      </div>
+                    ))}
+                    {['expert', 'troubleshooting', 'multilang'].map((item) => (
                       <div key={item} className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
                         <span className="text-gray-300">{t(`home.pricing.features.${item}`)}</span>
@@ -762,16 +845,43 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  <Button onClick={scrollToForm} size="lg" className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-xl h-14">
-                    {t('home.pricing.cta')}
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                  <Button
+                    onClick={async () => {
+                      if (!isAuthenticated) {
+                        router.push('/register?redirect=/&subscribe=true');
+                        return;
+                      }
+                      if (isSubscribed) {
+                        router.push('/dashboard');
+                        return;
+                      }
+                      setSubscribeLoading(true);
+                      try {
+                        await subscribe();
+                      } catch {
+                        toast.error(t('errors.genericError'));
+                        setSubscribeLoading(false);
+                      }
+                    }}
+                    disabled={subscribeLoading}
+                    size="lg"
+                    className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-xl h-14"
+                  >
+                    {subscribeLoading ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <>
+                        {t('home.pricing.plans.subscription.cta')}
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </>
+                    )}
                   </Button>
-                </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
 
-                <p className="text-gray-500 text-sm">{t('home.pricing.guarantee')}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
+          <p className="text-center text-gray-400 text-sm mt-6">{t('home.pricing.guarantee')}</p>
         </div>
       </section>
 
@@ -907,5 +1017,13 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense>
+      <HomePageContent />
+    </Suspense>
   );
 }

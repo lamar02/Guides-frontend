@@ -29,7 +29,7 @@
     },
     "features": {
       "freePreview": "Preview gratuite",
-      "oneTimePayment": "Paiement unique",
+      "oneTimePayment": "Des 2,99$/guide",
       "permanentAccess": "Acces permanent"
     },
     "form": {
@@ -76,7 +76,7 @@
       },
       "step3": {
         "title": "Debloquez le guide",
-        "description": "Un paiement unique de 3,99€"
+        "description": "A partir de 2,99$ par guide"
       }
     },
     "benefits": {
@@ -96,8 +96,8 @@
           "description": "Essayez avant de payer"
         },
         "permanent": {
-          "title": "Acces permanent",
-          "description": "Un seul paiement, pas d'abonnement"
+          "title": "Tarification flexible",
+          "description": "Payez par guide ou abonnez-vous mensuellement"
         }
       }
     },
@@ -161,17 +161,34 @@
       }
     },
     "pricing": {
-      "label": "Tarification simple",
-      "title": "Un prix unique,",
-      "titleHighlight": "acces a vie.",
-      "description": "Pas d'abonnement. Payez une fois par guide et gardez-le pour toujours.",
+      "label": "Tarification flexible",
+      "title": "Choisissez votre",
+      "titleHighlight": "formule.",
+      "description": "Payez par guide ou passez a l'illimite avec un abonnement mensuel.",
       "perGuide": "Par guide",
+      "perMonth": "/ mois",
+      "popular": "Le plus populaire",
       "features": {
         "complete": "Guide complet detaille",
         "expert": "Conseils d'expert",
         "troubleshooting": "Section depannage",
         "permanent": "Acces permanent",
         "multilang": "Multi-langue FR/EN"
+      },
+      "plans": {
+        "single": {
+          "name": "Guide unique",
+          "description": "Parfait pour un besoin ponctuel",
+          "cta": "Creer mon guide"
+        },
+        "subscription": {
+          "name": "Illimite",
+          "description": "Guides illimites, resiliable a tout moment",
+          "feature1": "Generation de guides illimitee",
+          "feature2": "Acces complet a tous les guides",
+          "feature3": "Resiliable a tout moment",
+          "cta": "S'abonner"
+        }
       },
       "cta": "Creer mon guide",
       "guarantee": "Previsualisation gratuite avant paiement"
@@ -308,7 +325,9 @@
     "newGuide": "Nouveau guide",
     "open": "Ouvrir",
     "complete": "Complet",
-    "previewBadge": "Preview"
+    "previewBadge": "Preview",
+    "subscriptionActive": "Formule Illimitee",
+    "subscriptionBadge": "Abonne"
   },
   "guide": {
     "steps": "Etapes",
@@ -327,7 +346,8 @@
     "contentNotAvailable": "Contenu non disponible",
     "unlockComplete": "Debloquez le guide complet",
     "allStepsPlus": "Toutes les etapes + Guide de depannage",
-    "buyNow": "Acheter maintenant"
+    "buyNow": "Acheter maintenant",
+    "orSubscribe": "Ou 9,99$/mois pour un acces illimite"
   },
   "payment": {
     "verifying": "Verification du paiement...",
@@ -337,11 +357,45 @@
     "viewGuide": "Voir le guide complet",
     "backToDashboard": "Retour au tableau de bord",
     "processing": "Traitement en cours",
-    "processingDescription": "Votre paiement est en cours de verification. L'acces sera disponible dans quelques instants."
+    "processingDescription": "Votre paiement est en cours de verification. L'acces sera disponible dans quelques instants.",
+    "subscriptionSuccess": "Abonnement active !",
+    "subscriptionSuccessDescription": "Vous avez maintenant un acces illimite a tous les guides. Commencez a analyser vos PDF !",
+    "goToDashboard": "Aller au tableau de bord",
+    "analyzeNow": "Analyser un PDF"
+  },
+  "newGuide": {
+    "title": "Creer un nouveau guide",
+    "subtitle": "Collez une URL ou uploadez votre manuel PDF",
+    "tabUrl": "Coller une URL",
+    "tabUpload": "Uploader un PDF",
+    "urlPlaceholder": "https://exemple.com/manuel.pdf",
+    "titleLabel": "Titre du guide",
+    "titleOptional": "(optionnel)",
+    "titlePlaceholder": "Ex: Guide TV Samsung",
+    "dropzone": "Glissez-deposez votre PDF ici",
+    "dropzoneSub": "ou cliquez pour parcourir",
+    "maxSize": "PDF uniquement, max 10 Mo",
+    "uploading": "Upload en cours...",
+    "analyzing": "Analyse du document...",
+    "fileSelected": "Fichier selectionne",
+    "submit": "Analyser le document",
+    "backToDashboard": "Retour au tableau de bord",
+    "steps": {
+      "uploading": "Upload du fichier...",
+      "connecting": "Connexion au document...",
+      "extracting": "Extraction du texte...",
+      "aiAnalysis": "Analyse IA en cours...",
+      "generating": "Generation du guide..."
+    }
   },
   "errors": {
     "connectionError": "Erreur de connexion",
     "genericError": "Une erreur est survenue",
-    "guideNotFound": "Guide non trouve"
+    "guideNotFound": "Guide non trouve",
+    "scannedPdf": "Ce PDF semble etre un document scanne (base sur des images). Veuillez utiliser un PDF avec du texte selectionnable.",
+    "extractionFailed": "Nous n'avons pas pu extraire suffisamment de texte de ce PDF. Assurez-vous que le document contient du texte lisible.",
+    "invalidContent": "Le contenu extrait semble invalide ou corrompu. Veuillez essayer avec un autre PDF.",
+    "processingFailed": "Une erreur est survenue lors du traitement de votre document. Veuillez reessayer.",
+    "scannedPdfTip": "Astuce : ouvrez le PDF et essayez de selectionner du texte. Si vous ne pouvez pas, c'est un document scanne."
   }
 }
